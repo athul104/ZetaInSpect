@@ -1,0 +1,45 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dll
+
+# Virtual envs
+.venv/
+venv/
+.env/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Test/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+
+# Hatch build output (if used)
+*.hatch/
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+
+# Mac and Linux system files
+.DS_Store
+Thumbs.db
+
+# Notebook export cache (if ever using nbconvert)
+*.nbconvert.ipynb
