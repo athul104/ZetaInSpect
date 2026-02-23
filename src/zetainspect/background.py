@@ -185,7 +185,7 @@ class InflationHistory:
 
     def Hubble(self, N):
         """
-        Evaluate H(N) for given N using cached phase-start values.
+        Evaluate H(N) in units of reduced Planck mass for given N using cached phase-start values.
 
         Parameters
         ----------
@@ -417,15 +417,15 @@ class InflationHistory:
         lines.append(f"  efold_list  = {np.array2string(self.transitions, precision=digits)}")
         lines.append("")
         lines.append("Pivot-derived")
-        lines.append(f"  H_pivot     = {f(self.H_pivot)}")
+        lines.append(f"  H_pivot     = {f(self.H_pivot)} [m_Planck]")
         lines.append(f"  epsilon_pivot   = {f(self.epsilon_pivot)}")
         lines.append(f"  eta_pivot   = {f(eta_p)}")
-        lines.append(f"  n_s(pivot)  = {f(n_s)}    (approx: 1 + 2η - 4ε)")
+        lines.append(f"  n_s(pivot)  = {f(n_s)}    (1 + 2η - 4ε)")
         lines.append("")
         lines.append(f"Near end (N = {f(N_end)})")
         lines.append(f"  eta(end)    = {f(eta_e)}")
         lines.append(f"  epsilon(end)    = {f(eps_e)}")
-        lines.append(f"  H(end)      = {f(H_e)}")
+        lines.append(f"  H(end)      = {f(H_e)} [m_Planck]")
         lines.append("")
         lines.append("Validity flags")
         if hierarchy_ok is not None:
