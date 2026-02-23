@@ -280,6 +280,7 @@ def plot_quantity(
 
     ax.set_xlabel(xlabel)
     ax.set_ylabel(y)
+    ax.set_xlim(min(xvals), max(xvals))
 
     # -------------------------
     # Overlays
@@ -289,17 +290,17 @@ def plot_quantity(
     # Pivot marker
     if "pivot" in overlays:
         if x == "N":
-            ax.axvline(history.N_pivot)
+            ax.axvline(history.N_pivot, color = 'purple', linestyle="--", alpha=0.8)
         else:
             # In ratio-mode, the k-value corresponding to N_pivot at the chosen ratio
             k_piv = float(history.k_pivot)
-            ax.axvline(k_piv)
+            ax.axvline(k_piv, color = 'purple', linestyle="--", alpha=0.8)
 
     # Transition markers
     if "transitions" in overlays and history.transitions.size > 0:
         if x == "N":
             for Nt in history.transitions:
-                ax.axvline(float(Nt), linestyle="--", alpha=0.6)
+                ax.axvline(float(Nt), linestyle="--", alpha=0.6, color='orange')
         else:
             for Nt in history.transitions:
                 kt = float(scales.k_horizon_exit(float(Nt)))
@@ -307,14 +308,14 @@ def plot_quantity(
 
     # A_s horizontal line (only meaningful for Pzeta)
     if "As" in overlays and y == "Pzeta":
-        ax.axhline(float(history.A_s), linestyle=":", alpha=0.8)
+        ax.axhline(float(history.A_s), linestyle=":", alpha=0.8, color='darkgreen')
 
     # CMB window (placeholder defaults; adjust as needed)
     if "CMB" in overlays and x == "k":
         # Typical rough k-range for CMB analyses; customize to your convention.
         kmin_cmb = 0.0005
         kmax_cmb = 0.5
-        ax.axvspan(kmin_cmb, kmax_cmb, alpha=0.1)
+        ax.axvspan(kmin_cmb, kmax_cmb, alpha=0.1, color='lightblue')
 
     # PBH constraints (placeholder hook)
     if "PBH" in overlays and y == "Pzeta":
